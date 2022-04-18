@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { TrackModel } from '@core/models/tracks.model';
 // import { TrackModel } from '@core/models/tracks.model';
 import { MultimediaService } from '@shared/services/multimedia.service';
-import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
+import { Subscription } from 'rxjs'; // TODO: Programacion reactiva!
 @Component({
   selector: 'app-media-player',
   templateUrl: './media-player.component.html',
@@ -9,16 +10,18 @@ import { Subscription } from 'rxjs'; //TODO: Programacion reactiva!
 })
 export class MediaPlayerComponent implements OnInit {
   ngOnInit(): void {
-  
+
   }
   // @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('')
   // listObservers$: Array<Subscription> = []
   // state: string = 'paused'
 
-  mockCover: any ={
-    cover: '',
-    name:'Gigli & Asia',
-    album:'bee(official)'
+  mockCover: TrackModel = {
+    cover: 'https://jenesaispop.com/wp-content/uploads/2009/09/guetta_onelove.jpg',
+    name:'"Getting Over',
+    album:'David Guetta)',
+    url: '',
+    _id: 1,
 
   }
 
