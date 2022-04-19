@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TrackModel } from '@core/models/tracks.model';
+import { TrackModel } from '@core/models/track.model';
 
 @Component({
   selector: 'app-section-generic',

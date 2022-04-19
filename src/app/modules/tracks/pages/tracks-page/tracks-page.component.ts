@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrackModel } from '@core/models/tracks.model';
+import { TrackModel } from '@core/models/track.model';
 import * as dataRaw from '../../../../data/tracks.json';
 
 @Component({
