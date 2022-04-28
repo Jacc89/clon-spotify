@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '@modules/auth/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -9,12 +10,11 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-
-  // errorSession: boolean = false
   formLogin: FormGroup = new FormGroup({});
 
-  // constructor(private authService: AuthService, private cookie: CookieService,
-  //   private router: Router) { }
+  constructor(private authService: AuthService,
+    // private cookie: CookieService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -34,10 +34,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   sendLogin(): void {
-    const body = this.formLogin.value
-    console.log(body)
-    // const { email, password } = this.formLogin.value
-    // this.authService.sendCredentials(email, password)
+    // const body = this.formLogin.value
+    // console.log(body)
+    const { email, password } = this.formLogin.value
+    this.authService.sendCredentials(email, password)
     //   //TODO: 200 <400
     //   .subscribe(responseOk => { //TODO: Cuando el usuario credenciales Correctas ✔✔
     //     console.log('Session iniciada correcta', responseOk);

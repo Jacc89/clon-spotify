@@ -9,16 +9,15 @@ import * as dataRaw from '../../../../data/tracks.json';
 })
 export class TracksPageComponent implements OnInit {
 
-  mockTracksList: Array<TrackModel> = [
-
-];
+  tracksTrending: Array<TrackModel> = [];
+  tracksRandon: Array<TrackModel> = [];
 
   constructor() { }
 
   ngOnInit(): void {
    const {data} : any =(dataRaw as any).default;
-    // console.log(data);
-    this.mockTracksList = data;
+    console.log(data);
+    // this.mockTracksList = data;
   }
 
 }
