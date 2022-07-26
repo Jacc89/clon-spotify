@@ -12,25 +12,39 @@ import * as dataRaw from '../../../../data/tracks.json';
 export class TracksPageComponent implements OnInit {
 
   tracksTrending: Array<TrackModel> = [];
-  tracksRandon: Array<TrackModel> = [];
+  tracksRandom: Array<TrackModel> = [];
 
   listObservers$: Array<Subscription> =[];
 
   constructor( private trackService: TracksService) { }
 
   ngOnInit(): void {
-  //  const {data} : any =(dataRaw as any).default;
-  //   console.log(data);
-  // this.mockTracksList = data;
+    this.loadDataAll()
+    this.loadDataRandom()
+  
+  }
 
-    this.trackService.getAllTracks$()
-    .subscribe(response =>{
-      console.log('arrays------>',response)
-    })
+  async loadDataAll(): Promise<any> {
+   this.tracksTrending = await this.trackService.getAllTracks$().toPromise();
+  //  this.tracksRandom = await this.trackService.getAllRandom$().toPromise();
+  }
+
+  loadDataRandom(): void{
+    this.trackService.getAllRandom$()
+      .subscribe((response: TrackModel[] )=>{
+        console.log('arrays tracks ts------>', response)
+      this.tracksRandom = response
+    }
+    // , err =>{
+      // alert('Error de conexion')
+      // console.log('Error de conexion');
+      // 
+    // }
+    )
   }
 
   ngOnDestroy(): void{
-    this.listObservers$.forEach(u => u.unsubscribe());
+    // this.listObservers$.forEach(u => u.unsubscribe());
   }
 
 }
